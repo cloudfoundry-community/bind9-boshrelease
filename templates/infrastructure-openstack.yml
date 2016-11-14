@@ -1,0 +1,46 @@
+meta:
+  environment: (( param "please set meta environment" ))
+  dns_root: (( param "please set meta dns_root" ))
+  private_security_groups: (( param "please set meta security_groups" ))
+  public_security_groups: (( param "please set meta security_groups" ))
+  private_net_id: (( param "please set meta private_net_id" ))
+  public_net_id: (( param "please set meta public_net_id" ))
+  persistent_disk: 4096
+
+  stemcell:
+    name: bosh-openstack-kvm-ubuntu-trusty-go_agent
+    version: latest
+
+jobs:
+  - name: master
+    networks:
+      - name: named
+        static_ips: (( static_ips 0 ))
+    persistent_disk: (( grab meta.persistent_disk ))
+  - name: slave
+    networks:
+      - name: named
+        static_ips: (( static_ips 1 2 ))
+    persistent_disk: (( grab meta.persistent_disk ))
+
+compilation:
+  cloud_properties:
+    instance_type: m1.medium
+
+resource_pools:
+  - name: named
+    cloud_properties:
+      instance_type: m1.medium
+
+networks:
+  - name: floating
+    type: vip
+    cloud_properties:
+      net_id: (( grab meta.public_net_id ))
+      security_groups: (( grab meta.public_security_groups ))
+  - name: named
+    subnets:
+      - name: bind91
+        cloud_properties:
+          net_id: (( grab meta.private_net_id ))
+          security_groups: (( grab meta.private_security_groups ))
