@@ -1,6 +1,6 @@
 ---
 meta:
-  environment: NAME
+  environment: DEPLOYMENT_NAME
   dns_root: microbosh
   security_groups:
     - bind9
