@@ -29,3 +29,7 @@ properties:
   bind9.recursion.allow_from:
     description: "List of IPs or CIDRs to allow recursive queries from. If recursion is enabled, localhost and localnets will always be allowed"
     default: []
+
+  bind9.options:
+    description: "Map of additional options"
+    default: {}
