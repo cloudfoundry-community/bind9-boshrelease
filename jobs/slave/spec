@@ -29,3 +29,7 @@ properties:
   bind9.options:
     description: "Map of additional options"
     default: {}
+
+  bind9.forward.zones:
+    description: "Forward zones in forward only mode,e.g. {name: zone1, forwarders: [1.1.1.1, 1.1.1.2]}"
+    default: {}
