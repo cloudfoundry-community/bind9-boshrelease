@@ -14,7 +14,15 @@ properties:
   bind9.slave.master:
     description: "IP address of the master BIND9 nameserver"
   bind9.slave.zones:
-    description: "List of zones to transfer from the master"
+    description: "List of zones to transfer from the master with optional overrides for each zone. Currently only the master can be overridden per-zone"
+    example: |
+      slave:
+        zones:
+        #No overrides. Use defaults
+        - foo.com
+        #Override the master only
+        - bar.com:
+            master: 1.2.3.4
   bind9.slave.allow_notify:
     description: "ACL (possible semi-colon delimited) to allow AXFR zone transfers from"
     default: "none"
