@@ -1,0 +1,27 @@
+name: bind9
+version: 1.1.5
+commit_hash: 55558ad
+uncommitted_changes: false
+jobs:
+- name: master
+  version: d4cea9b45037394dc34c2a0fe770bdbc8d88ce9b2dc7c73ac32a1eb93fdeed31
+  fingerprint: d4cea9b45037394dc34c2a0fe770bdbc8d88ce9b2dc7c73ac32a1eb93fdeed31
+  sha1: sha256:5d4d28b73b888a705bacbcc176875558730419faab6bf5893782be7c2b31abe1
+  packages:
+  - bind9
+- name: slave
+  version: 51b45cccf3a0cf7207ab4d1898615f886d48a74e6edf4aa14f963faa45138c09
+  fingerprint: 51b45cccf3a0cf7207ab4d1898615f886d48a74e6edf4aa14f963faa45138c09
+  sha1: sha256:8739dd56daa797664841172a60c629f5ce6d7128c79324df4e729e47e4dd2782
+  packages:
+  - bind9
+packages:
+- name: bind9
+  version: 5f7a0030e23cca5c1d082639c05d190e97fe2010b1e58f4437862d842e4ab298
+  fingerprint: 5f7a0030e23cca5c1d082639c05d190e97fe2010b1e58f4437862d842e4ab298
+  sha1: sha256:b76ed3994a7fa5e70f36e0336e023bf0f31afb3938aeaba604a44c6aef07e0d6
+  dependencies: []
+license:
+  version: 2ddf44a51ba997973997ce5343ce1bdc8ee0d1bce5c91d6f0db4fb1386a58cb1
+  fingerprint: 2ddf44a51ba997973997ce5343ce1bdc8ee0d1bce5c91d6f0db4fb1386a58cb1
+  sha1: sha256:03c041a3488f7640fafa022bd700e370143f743a1be2479038ece3ad15b2ea7e
