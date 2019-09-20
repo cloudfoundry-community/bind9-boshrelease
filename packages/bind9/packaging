@@ -2,7 +2,7 @@
 set -eu
 
 cpus=$(grep -c ^processor /proc/cpuinfo)
-version=9.15.2
+version=9.15.4
 
 echo "Installing bind9 v${version} to ${BOSH_INSTALL_TARGET}"
 echo "using $cpus CPUs for parallel builds"
