@@ -20,6 +20,7 @@ provides:
 consumes:
   - name: slave-dns
     type: slave-dns
+    optional: true
 
 properties:
   network:

@@ -1,8 +1,8 @@
 ---
-name: bind9
+name: bind9-replicated
 
 instance_groups:
-  - name: bind9
+  - name: master
     azs:  [z1]
 
     stemcell: default
@@ -10,7 +10,7 @@ instance_groups:
     networks:
       - name: default
 
-    instances: 3
+    instances: 1
     jobs:
       - name:    master
         release: bind9
@@ -48,6 +48,19 @@ instance_groups:
               11.0.0  IN PTR ns1.foo.bl.
               12.0.0  IN PTR ns2.foo.bl.
               42.0.0  IN PTR bar.foo.bl.
+
+
+  - name: slave
+    azs:  [z2]
+
+    stemcell: default
+    vm_type: default
+    networks:
+      - name: default
+
+    instances: 2
+    jobs:
+    - { release: bind9, name: slave }
 
 
 stemcells:
