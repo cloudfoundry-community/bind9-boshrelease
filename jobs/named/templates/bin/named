@@ -2,18 +2,18 @@
 set -eu
 
 mkdir -p /var/vcap/sys/log/bind9 \
-         /var/vcap/sys/run/master
-exec >> /var/vcap/sys/log/bind9/master.log 2>&1
+         /var/vcap/sys/run/named
+exec >> /var/vcap/sys/log/bind9/named.log 2>&1
 
 PATH=$PATH:/var/vcap/packages/bind9/sbin
 PATH=$PATH:/var/vcap/packages/bind9/bin
 export PATH
 
- datadir="/var/vcap/sys/run/master/data"
- config=/var/vcap/jobs/master/config/master.conf
-   ttar=/var/vcap/jobs/master/bin/ttar
-  zones=/var/vcap/jobs/master/config/zones.ttar
-pidfile=/var/vcap/sys/run/master/master.pid
+ datadir="/var/vcap/sys/run/named/data"
+ config=/var/vcap/jobs/named/config/named.conf
+   ttar=/var/vcap/jobs/named/bin/ttar
+  zones=/var/vcap/jobs/named/config/zones.ttar
+pidfile=/var/vcap/sys/run/named/named.pid
 
 pids=
 if [[ -f $pidfile ]]; then
@@ -34,9 +34,9 @@ case $1 in
     $ttar < $zones
 
     # check configuration
-    echo "[$(date)] checking named master configuration..."
+    echo "[$(date)] checking named configuration..."
     named-checkconf $config
-    echo "[$(date)] named master configuration OK"
+    echo "[$(date)] named configuration OK"
     echo
 
     for file in ${datadir}/*.db; do
@@ -51,7 +51,7 @@ case $1 in
     echo
 
     echo $$ > $pidfile
-    echo "[$(date)] bind master starting up (pid $$)"
+    echo "[$(date)] bind named starting up (pid $$)"
     exec named -g -c $config
     ;;
 
@@ -77,7 +77,7 @@ case $1 in
     ;;
 
   *)
-    echo "Usage: master {start|stop}"
+    echo "Usage: named {start|stop}"
     ;;
 
 esac

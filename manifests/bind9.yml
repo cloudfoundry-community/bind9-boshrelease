@@ -12,7 +12,7 @@ instance_groups:
 
     instances: 3
     jobs:
-      - name:    master
+      - name:    named
         release: bind9
         properties:
           network: 10.0.0.0/8

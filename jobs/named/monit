@@ -1,0 +1,5 @@
+check process named
+  with pidfile /var/vcap/sys/run/named/named.pid
+  start program "/var/vcap/jobs/named/bin/named start"
+  stop program  "/var/vcap/jobs/named/bin/named stop"
+  group vcap

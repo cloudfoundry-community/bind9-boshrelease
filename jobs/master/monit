@@ -1,5 +1,0 @@
-check process master
-  with pidfile /var/vcap/sys/run/master/master.pid
-  start program "/var/vcap/jobs/master/bin/master start"
-  stop program  "/var/vcap/jobs/master/bin/master stop"
-  group vcap

@@ -1,0 +1,6 @@
+========================== 0644 /var/vcap/sys/run/named/data/all.json
+<%= properties.to_json %>
+<% p('zones', {}).each do |domain, config| %>
+========================== 0644 /var/vcap/sys/run/named/data/<%= domain %>.db
+<%= config %>
+<% end %>

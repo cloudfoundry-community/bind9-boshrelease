@@ -1,26 +1,13 @@
 ---
-name: master
+name: named
 packages:
   - bind9
 
 templates:
-  bin/master:         bin/master
+  bin/named:          bin/named
   bin/ttar:           bin/ttar
-  config/master.conf: config/master.conf
+  config/named.conf:  config/named.conf
   config/zones.ttar:  config/zones.ttar
-
-provides:
-  - name: master-dns
-    type: master-dns
-    properties:
-      - network
-      - zones
-      - forward
-
-consumes:
-  - name: slave-dns
-    type: slave-dns
-    optional: true
 
 properties:
   network:
