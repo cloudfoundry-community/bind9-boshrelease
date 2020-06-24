@@ -1,10 +1,5 @@
 # BOSH Release for bind9
 
-[![Built by pipes.starkandwayne.com][badge]][pipes]
-
-[pipes]: https://pipes.starkandwayne.com/teams/main/pipelines/bind9-boshrelease
-[badge]: https://pipes.starkandwayne.com/api/v1/teams/main/pipelines/bind9-boshrelease/badge
-
 This BOSH release packages up [BIND9][bind9] so that you can run your
 own DNS server, for purposes of split DNS, custom domains, or
 whatever you need custom control over naming of hosts.
