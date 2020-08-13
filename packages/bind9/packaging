@@ -2,21 +2,96 @@
 set -eu
 
 cpus=$(grep -c ^processor /proc/cpuinfo)
-version=9.15.4
 
+#####################################################
+
+version=2.69
+echo "Installing autoconf v${version} build dependency"
+echo "using $cpus CPUs for parallel builds"
+echo
+
+# latest versions available at ...
+tar -xzvf bind9/autoconf-${version}.tar.gz
+pushd autoconf-${version} 2>/dev/null
+  # NOTE: this one does NOT go into $BOSH_INSTALL_TARGET,
+  #       as it is only necessary for the autogen.sh
+  #       step of libuv itself.
+  ./configure
+  make
+  make install
+popd 2>/dev/null
+
+#####################################################
+
+version=1.16.2
+echo "Installing automake v${version} build dependency"
+echo "using $cpus CPUs for parallel builds"
+echo
+
+# latest versions available at ...
+tar -xzvf bind9/automake-${version}.tar.gz
+pushd automake-${version} 2>/dev/null
+  # NOTE: this one does NOT go into $BOSH_INSTALL_TARGET,
+  #       as it is only necessary for the autogen.sh
+  #       step of libuv itself.
+  ./configure
+  make
+  make install
+popd 2>/dev/null
+
+#####################################################
+
+version=2.4.6
+echo "Installing libtool v${version} build dependency"
+echo "using $cpus CPUs for parallel builds"
+echo
+
+# latest versions available at https://ftp.gnu.org/gnu/libtool/
+tar -xzvf bind9/libtool-${version}.tar.gz
+pushd libtool-${version} 2>/dev/null
+  # NOTE: this one does NOT go into $BOSH_INSTALL_TARGET,
+  #       as it is only necessary for the build / configure
+  #       step of bind9 itself.
+  ./configure
+  make -j$cpus
+  make install
+popd 2>/dev/nulll
+
+#####################################################
+
+version=1.38.1
+echo "Installing libuv v${version} to ${BOSH_INSTALL_TARGET}"
+echo "using $cpus CPUs for parallel builds"
+echo
+
+# latest versions available at https://dist.libuv.org/dist
+tar -xzvf bind9/libuv-v${version}.tar.gz
+pushd libuv-v${version} 2>/dev/null
+  sh autogen.sh
+  ./configure \
+    --prefix=${BOSH_INSTALL_TARGET}
+  make -j$cpus
+  make install
+popd 2>/dev/nulll
+export PKG_CONFIG_PATH=/var/vcap/packages/bind9/lib/pkgconfig/
+
+#####################################################
+
+version=9.17.3
 echo "Installing bind9 v${version} to ${BOSH_INSTALL_TARGET}"
 echo "using $cpus CPUs for parallel builds"
 echo
 
 # latest versions available at https://ftp.isc.org/isc/bind/
 tar -xzvf bind9/bind-${version}.tar.gz
-cd bind-${version}
-./configure \
-  --without-libjson \
-  --without-python \
-  --prefix=${BOSH_INSTALL_TARGET}
-make -j$cpus
-make install
+pushd bind-${version} 2>/dev/null
+  ./configure \
+    --prefix=${BOSH_INSTALL_TARGET}
+  make -j$cpus
+  make install
+popd 2>/dev/nulll
+
+#####################################################
 
 echo
 echo "DONE"

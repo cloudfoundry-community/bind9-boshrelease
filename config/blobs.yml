@@ -1,4 +1,20 @@
-bind9/bind-9.15.4.tar.gz:
-  size: 6307930
-  object_id: 3b5f0513-9f93-44bb-7a60-d458c4b2b2cf
-  sha: 7b7be14e89f7ac9605a9acabbf0f4c3a3a563ced
+bind9/autoconf-2.69.tar.gz:
+  size: 1927468
+  object_id: f3517f3a-91e5-4bff-6d9b-7e3b48095d02
+  sha: sha256:954bd69b391edc12d6a4a51a2dd1476543da5c6bbf05a95b59dc0dd6fd4c2969
+bind9/automake-1.16.2.tar.gz:
+  size: 2311642
+  object_id: 3e33298d-b7e5-4583-6e27-0bb77e1b83bd
+  sha: sha256:b2f361094b410b4acbf4efba7337bdb786335ca09eb2518635a09fb7319ca5c1
+bind9/bind-9.17.3.tar.gz:
+  size: 5375066
+  object_id: 4864ea55-ef3f-410a-5bd9-e9bca69cca7d
+  sha: sha256:dbffd20b47f4a56f1b64d6675e6910609d89f697a109271f333308597e095264
+bind9/libtool-2.4.6.tar.gz:
+  size: 1806697
+  object_id: 08545424-72f0-4ca2-5154-9321f4257922
+  sha: sha256:e3bd4d5d3d025a36c21dd6af7ea818a2afcd4dfc1ea5a17b39d7854bcd0c06e3
+bind9/libuv-v1.38.1.tar.gz:
+  size: 1250811
+  object_id: 4203cc42-c404-4f80-684d-df64af3882af
+  sha: sha256:0ece7d279e480fa386b066130a562ad1a622079d43d1c30731f2f66cd3f5c647
