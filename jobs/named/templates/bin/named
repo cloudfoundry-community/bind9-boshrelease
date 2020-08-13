@@ -1,5 +1,6 @@
 #!/bin/bash
 set -eu
+shopt -s nullglob
 
 mkdir -p /var/vcap/sys/log/bind9 \
          /var/vcap/sys/run/named
